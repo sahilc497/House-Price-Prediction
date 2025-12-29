@@ -1,8 +1,5 @@
-const locationURL = "http://127.0.0.1:5000/get_location_names";
-const predictURL = "http://127.0.0.1:5000/predict_home_price";
-
 window.onload = () => {
-    fetch(locationURL)
+    fetch("/get_location_names")
         .then(res => res.json())
         .then(data => {
             const select = document.getElementById("uiLocations");
@@ -33,7 +30,7 @@ function onClickedEstimatePrice() {
     formData.append("bhk", bhk);
     formData.append("bath", bath);
 
-    fetch(predictURL, {
+    fetch("/predict_home_price", {
         method: "POST",
         body: formData
     })
